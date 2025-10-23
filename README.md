@@ -57,13 +57,12 @@ Our code is adapted and extended from the following sources:
 If you want to cite our work, please cite our paper using the following BibTeX entry:
 
 ```bib
-@misc{pimba,
+@inproceedings{pimba,
   title         = {{Pimba: A Processing-in-Memory Acceleration for Post-Transformer Large Language Model Serving}},
-  author        = {Wonung Kim and Yubin Lee and Yoonsung Kim and Jinwoo Hwang and Seongryong Oh and Jiyong Jung and Aziz Huseynov and Woong Gyu Park and Chang Hyun Park and Divya Mahajan and Jongse Park},
+  author        = {Kim, Wonung and Lee, Yubin and Kim, Yoonsung and Hwang, Jinwoo and Oh, Seongryong and Jung, Jiyong and Huseynov, Aziz and Park, Woong Gyu and Park, Chang Hyun and Mahajan, Divya and Park, Jongse},
   year          = {2025},
-  url           = {https://arxiv.org/abs/2507.10178},
-  eprint        = {2507.10178},
-  archiveprefix = {arXiv},
-  primaryclass  = {cs.AR}
+  booktitle     = {Proceedings of the 58th IEEE/ACM International Symposium on Microarchitecture},
+  pages         = {292–307},
+  doi           = {10.1145/3725843.3756121}
 }
 ```
