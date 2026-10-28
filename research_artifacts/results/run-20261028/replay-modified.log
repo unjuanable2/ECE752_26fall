@@ -1,0 +1,16 @@
+{
+  "audit_dir": "/home/jianing/ECE752/results/run-20261028/modified-b128-s32-pim/a132a351d2a8e7f5",
+  "expected": {
+    "cycles": 17525,
+    "num_act": 20480,
+    "num_comp": 81920,
+    "num_rdwr": 134400
+  },
+  "actual": {
+    "cycles": 17525,
+    "num_act": 20480,
+    "num_comp": 81920,
+    "num_rdwr": 134400
+  },
+  "matched": true
+}

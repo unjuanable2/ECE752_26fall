@@ -1,0 +1,11 @@
+test_default_off_exact_baseline (test_interleaving.InterleavingTests.test_default_off_exact_baseline) ... ok
+test_real_overlap_and_dependencies (test_interleaving.InterleavingTests.test_real_overlap_and_dependencies) ... ok
+test_reject_invalid (test_interleaving.InterleavingTests.test_reject_invalid) ... ok
+test_single_sub_batch_no_overlap (test_interleaving.InterleavingTests.test_single_sub_batch_no_overlap) ... ok
+test_sync_sensitivity (test_interleaving.InterleavingTests.test_sync_sensitivity) ... ok
+test_tail_and_state_recurrence (test_interleaving.InterleavingTests.test_tail_and_state_recurrence) ... ok
+
+----------------------------------------------------------------------
+Ran 6 tests in 15.631s
+
+OK

@@ -1,0 +1,26 @@
+Frontend:
+  Translation:
+    impl: NoTranslation
+    max_addr: 2147483648
+  clock_ratio: 1
+  impl: LAXTrace
+  path: /tmp/tmpilqpfrp2
+MemorySystem:
+  AddrMapper:
+    impl: LAXMapper
+  Controller:
+    RefreshManager:
+      impl: AllBank
+    Scheduler:
+      impl: FRFCFS
+    impl: LAXController
+    plugins: null
+  DRAM:
+    impl: LAX
+    org:
+      channel: 40
+      preset: LAX_8Gb
+    timing:
+      preset: dramsim3
+  clock_ratio: 1
+  impl: GenericDRAM

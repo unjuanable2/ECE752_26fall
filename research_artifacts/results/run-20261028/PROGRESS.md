@@ -1,0 +1,11 @@
+# Resume log
+- Existing Pimba 0a902ee and NeuPIMs f299af3 repositories found; Pimba already on feature/sub-batch-interleaving. No source modifications before baseline.
+- Network recovered. Installed local uv and CPython3.12.16 in workspace, minimal performance dependencies (no accuracy GPU kernels).
+- Building original C++ model, preserving source unchanged. Prior failure logs retained.
+- Original release build passed (GCC11.4, pinned Ramulator2), smoke B8 lout2 passed with source unchanged.
+- Original B32/64/128 lout17 baseline captured before timing source edits; immutable hashes recorded.
+- Implemented static-channel-partition event scheduler, explicit handoffs, per-sub-batch/token/decoder dependencies/state versions, default-off path, CPU-only lazy API, raw audit.
+- Six regression tests passed; archived baseline/modified PIM replays matched every counter.
+- Completed 11 cases + five controls/sensitivities at both lout17 and lout2048. Full2048 baselines rerun against pinned pristine checkout with same binary. No baseline overwritten.
+- Generated comparison CSV/JSON, four required plots and additional timeline/utilization. All configurations slower than original; same-partition overlap control isolates 6.75% throughput gain at B128/S32.
+- Updated reports with assumptions, failed/successful stages, reproducibility and incomplete high-fidelity mixed-traffic modeling. No push.

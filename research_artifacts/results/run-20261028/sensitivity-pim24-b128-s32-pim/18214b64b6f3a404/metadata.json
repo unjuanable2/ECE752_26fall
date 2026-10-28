@@ -1,0 +1,15 @@
+{
+  "layer": {
+    "hw": "Pimba",
+    "op_type": "SU",
+    "num_op": 2880,
+    "head_dim": 128,
+    "state_dim": 64,
+    "state_dbyte": 1
+  },
+  "channels": 24,
+  "hbm_freq": 1512,
+  "returncode": 0,
+  "use_command_scheduling": true,
+  "use_chunk_group": true
+}

@@ -1,0 +1,149 @@
+[Ramulator::LAXTrace] [info] Loading trace file /tmp/tmpw6o99vu6 ...
+[Ramulator::LAXTrace] [info] Loaded 89600 lines.
+Frontend:
+  impl: LAXTrace
+
+MemorySystem:
+  impl: GenericDRAM
+  total_num_other_requests: 89600
+  total_num_write_requests: 0
+  total_num_read_requests: 0
+  memory_system_cycles: 21836
+
+  DRAM:
+    impl: LAX
+    num_comp: 81920
+    num_rdwr: 134400
+    num_act: 20480
+  AddrMapper:
+    impl: LAXMapper
+  Controller:
+    impl: LAXController
+    id: Channel 0
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 1
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 2
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 3
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 4
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 5
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 6
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 7
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 8
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 9
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 10
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 11
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 12
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 13
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 14
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+  Controller:
+    impl: LAXController
+    id: Channel 15
+    Scheduler:
+      impl: FRFCFS
+    RefreshManager:
+      impl: AllBank
+
+
+

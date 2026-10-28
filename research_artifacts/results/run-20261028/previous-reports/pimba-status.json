@@ -1,0 +1,25 @@
+{
+  "recorded_at_utc": "2026-10-28T08:33:09.822422+00:00",
+  "status": "blocked_on_original_build_dependencies",
+  "pimba_commit": "0a902eeafddbfddaa34723ed74a761e4453b870d",
+  "neupims_commit": "f299af3fc8f20077e816f2e48313294cddb4bd7c",
+  "branch": "feature/sub-batch-interleaving",
+  "source_available": true,
+  "branch_created": true,
+  "baseline_executed": false,
+  "baseline_attempted": true,
+  "batch_source_analysis_completed": true,
+  "neupims_source_reference_completed": true,
+  "implementation_completed": false,
+  "simulator_tests_executed": false,
+  "preflight_executed": true,
+  "measurements": [],
+  "blockers": [
+    "Python3.12 unavailable on inspected interpreters",
+    "uv/cmake/ninja missing from PATH",
+    "performance packages missing; original import fails on lm_eval",
+    "PimbaSim absent; locked Ramulator2 dependency unavailable locally",
+    "network restricted; github.com DNS failure"
+  ],
+  "next_step": "Restore build dependencies, run unmodified original baseline, then implement scheduler"
+}

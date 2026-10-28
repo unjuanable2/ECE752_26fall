@@ -1,0 +1,49 @@
+{
+  "exp": {
+    "model": "mamba2-2.7b",
+    "batch_size": 32,
+    "system_name": "Pimba",
+    "num_gpus": 1,
+    "gpu": "A100"
+  },
+  "res": {
+    "time": {
+      "causal_conv1d": 1.2155903820669498,
+      "discretization": 1.0865382175523324,
+      "gemm": 8.597055784359014,
+      "others": 2.182514365493026,
+      "state_update": 0.7578882116402117
+    },
+    "power_1": {
+      "causal_conv1d": 10356463364997.12,
+      "discretization": 38528509542.4,
+      "gemm": 305823897343754.25,
+      "others": 6164561526784.0,
+      "state_update": 16181974007808.0
+    },
+    "power_2": {
+      "causal_conv1d": 1466744942100.48,
+      "discretization": 5456640409.6,
+      "gemm": 179206035876085.75,
+      "others": 849022392729.6001,
+      "state_update": 7555451453440.001
+    }
+  },
+  "wall_seconds": 1.4657989649995216,
+  "decode_latency_ms": 13839.586961111534,
+  "tpot_ms": 6.760912047440906,
+  "throughput": 4733.089230485171,
+  "lin": 2048,
+  "lout": 2048,
+  "commit": "0a902eeafddbfddaa34723ed74a761e4453b870d",
+  "binary_sha256": "e64b1f7f13f001bc7d4a633ea51f54833ae9b2bc6095753c91d95706671a98a5",
+  "pim_calls": [
+    {
+      "command": "/home/jianing/ECE752/results/run-20261028/pristine-pimba/build/PimbaSim -f /tmp/tmp3bca2lla -o /tmp/tmp7u47hg7g",
+      "wall_seconds": 1.4344118920007531,
+      "returncode": 0
+    }
+  ],
+  "source_diff": "",
+  "utc": "2026-10-28T09:20:05.278239+00:00"
+}

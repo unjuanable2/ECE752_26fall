@@ -1,0 +1,193 @@
+{
+  "exp": {
+    "model": "mamba2-2.7b",
+    "batch_size": 32,
+    "system_name": "Pimba",
+    "num_gpus": 1,
+    "gpu": "A100",
+    "lin": 2048,
+    "lout": 2048,
+    "sub_batch_interleaving": true,
+    "sub_batch_size": 32
+  },
+  "timing": {
+    "makespan_s": 24.020585987918185,
+    "throughput_tokens_s": 2726.9942553835713,
+    "decode_batch_latency_ms": 24020.585987918184,
+    "tpot_ms": 11.73453150362393,
+    "gpu_busy_s": 22.50212355402505,
+    "pim_busy_s": 1.5184624338635246,
+    "gpu_idle_s": 1.5184624338931343,
+    "pim_idle_s": 22.50212355405466,
+    "gpu_utilization": 0.936784954594493,
+    "pim_utilization": 0.06321504540427436,
+    "overlap_s": 0.0,
+    "overlap_fraction": 0.0,
+    "gpu_hbm_bytes": 11418229669888.0,
+    "gpu_hbm_bandwidth_utilization": 0.49131972793794837,
+    "expected_operations": 1179072,
+    "completed_operations": 1179072,
+    "sub_batches": [
+      {
+        "id": 0,
+        "request_start": 0,
+        "request_end": 32,
+        "size": 32,
+        "completion_s": 24.020585987918185,
+        "padded_pim_size": 32
+      }
+    ],
+    "request_mean_completion_ms": 24020.585987918184,
+    "state_versions": [
+      [
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047,
+        2047
+      ]
+    ],
+    "timeline": [],
+    "timeline_truncated": false,
+    "gpu_channels": 20,
+    "pim_channels": 20,
+    "total_channels": 40,
+    "sync_ns": 1000,
+    "model_scope": "static-channel-partition system-level estimate; isolated PIM command timing",
+    "profiles": {
+      "32": [
+        {
+          "name": "qkv",
+          "resource": "GPU",
+          "duration": 8.740465756898335e-05,
+          "gpu_bytes": 54575104.0
+        },
+        {
+          "name": "causal_conv1d",
+          "resource": "GPU",
+          "duration": 1.0267498504930234e-05,
+          "gpu_bytes": 2752512.0
+        },
+        {
+          "name": "discretization",
+          "resource": "GPU",
+          "duration": 8.297356765271318e-06,
+          "gpu_bytes": 10240.0
+        },
+        {
+          "name": "handoff_in",
+          "resource": "GPU",
+          "duration": 1.9961392308861528e-06,
+          "gpu_bytes": 819200
+        },
+        {
+          "name": "state_update",
+          "resource": "PIM",
+          "duration": 1.1590608465608465e-05,
+          "gpu_bytes": 0.0
+        },
+        {
+          "name": "handoff_out",
+          "resource": "GPU",
+          "duration": 1.7969113847089224e-06,
+          "gpu_bytes": 655360
+        },
+        {
+          "name": "norm",
+          "resource": "GPU",
+          "duration": 9.397962294573642e-06,
+          "gpu_bytes": 983039.9999999999
+        },
+        {
+          "name": "act",
+          "resource": "GPU",
+          "duration": 8.76083297736434e-06,
+          "gpu_bytes": 655360.0
+        },
+        {
+          "name": "o",
+          "resource": "GPU",
+          "duration": 4.384008755129959e-05,
+          "gpu_bytes": 26705920.0
+        }
+      ]
+    }
+  },
+  "wall_seconds": 2.8056337030002396,
+  "utc": "2026-10-28T09:20:27.191942+00:00",
+  "command": [
+    "/home/jianing/ECE752/pimba/scripts/research/run_case.py",
+    "--batch",
+    "32",
+    "--sub-batch",
+    "32",
+    "--output",
+    "/home/jianing/ECE752/results/run-20261028/full2048/modified-b32-s32.json",
+    "--lout",
+    "2048",
+    "--no-timeline"
+  ],
+  "python": "3.12.16 (main, Oct 26 2026, 14:08:45) [Clang 23.1.3 ]",
+  "binary_sha256": "e64b1f7f13f001bc7d4a633ea51f54833ae9b2bc6095753c91d95706671a98a5",
+  "lin": 2048,
+  "lout": 2048
+}

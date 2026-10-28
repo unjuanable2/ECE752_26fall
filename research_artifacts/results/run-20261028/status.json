@@ -1,0 +1,26 @@
+{
+  "status": "prototype_and_experiments_completed_with_modeling_limits",
+  "pimba_branch": "feature/sub-batch-interleaving",
+  "implementation_commit": "9d81ba8",
+  "baseline_success": true,
+  "interleaving_prototype": true,
+  "regression_tests": 6,
+  "regression_pass": true,
+  "full_matrix_modified_cases": 11,
+  "full_control_sensitivity_cases": 5,
+  "lin": 2048,
+  "lout": 2048,
+  "decode_steps": 2047,
+  "all_modified_cases_slower_than_original": true,
+  "results_directory": "results/run-20261028/full2048",
+  "report": "RESULTS.md",
+  "remaining": [
+    "joint mixed GPU/PIM C++ memory timing",
+    "physical address/capacity allocator",
+    "persistent refresh/controller timeline",
+    "numerical accuracy",
+    "RetNet/Zamba2",
+    "adaptive scheduling"
+  ],
+  "pushed": false
+}

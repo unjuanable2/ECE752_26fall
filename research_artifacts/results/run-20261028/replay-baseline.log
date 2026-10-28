@@ -1,0 +1,16 @@
+{
+  "audit_dir": "/home/jianing/ECE752/results/run-20261028/baseline-b128-pim",
+  "expected": {
+    "cycles": 35480,
+    "num_act": 81920,
+    "num_comp": 327680,
+    "num_rdwr": 537600
+  },
+  "actual": {
+    "cycles": 35480,
+    "num_act": 81920,
+    "num_comp": 327680,
+    "num_rdwr": 537600
+  },
+  "matched": true
+}

@@ -1,0 +1,16 @@
+RUN modified-b32-s8
+RUN modified-b32-s16
+RUN modified-b32-s32
+RUN modified-b64-s8
+RUN modified-b64-s16
+RUN modified-b64-s32
+RUN modified-b64-s64
+RUN modified-b128-s8
+RUN modified-b128-s16
+RUN modified-b128-s32
+RUN modified-b128-s64
+RUN control-serialized-b128-s32
+RUN sensitivity-sync0-b128-s32
+RUN sensitivity-sync5000-b128-s32
+RUN sensitivity-pim16-b128-s32
+RUN sensitivity-pim24-b128-s32
