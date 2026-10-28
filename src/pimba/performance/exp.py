@@ -16,6 +16,12 @@ class Performance:
         gpu: str,
         lin: int,
         lout: int,
+        sub_batch_interleaving: bool = False,
+        sub_batch_size: int = 32,
+        pim_channels: int = 20,
+        sync_ns: float = 1000.0,
+        execution_overlap: bool = True,
+        record_timeline: bool = True,
     ):
         config = tree.Tree(
             "Config",
@@ -57,6 +63,13 @@ class Performance:
 
         # workload
         self.batch_size = batch_size
+        self.lin, self.lout = lin, lout
+        self.sub_batch_interleaving = sub_batch_interleaving
+        self.sub_batch_size = sub_batch_size
+        self.pim_channels = pim_channels
+        self.sync_ns = sync_ns
+        self.execution_overlap = execution_overlap
+        self.record_timeline = record_timeline
 
         workload_config = tree.Tree("Workload")
         workload_config.add(f"batch: {batch_size}", style="white")
@@ -71,6 +84,19 @@ class Performance:
         print(self.config)
 
     def run(self):
+        if self.sub_batch_interleaving:
+            from ..performance.schedulers import InterleavingConfig, simulate_interleaved
+
+            timing = simulate_interleaved(
+                self.system, self.model_name, self.batch_size, self.lin, self.lout,
+                InterleavingConfig(self.sub_batch_size, self.pim_channels, self.sync_ns,
+                                   self.execution_overlap, self.record_timeline),
+            )
+            return {"exp": {"model": self.model_name, "batch_size": self.batch_size,
+                            "system_name": self.system_name, "num_gpus": self.num_gpus,
+                            "gpu": self.gpu, "lin": self.lin, "lout": self.lout,
+                            "sub_batch_interleaving": True, "sub_batch_size": self.sub_batch_size},
+                    "timing": timing}
         res = self.system.simulate(self.model)
         res = (
             res.groupby(["phase", "category"])
@@ -101,5 +127,13 @@ class Performance:
         gpu: str,
         lin: int = 2048,
         lout: int = 2048,
+        sub_batch_interleaving: bool = False,
+        sub_batch_size: int = 32,
+        pim_channels: int = 20,
+        sync_ns: float = 1000.0,
+        execution_overlap: bool = True,
+        record_timeline: bool = True,
     ):
-        yield Performance(model, system, num_gpus, batch_size, gpu, lin, lout)
+        yield Performance(model, system, num_gpus, batch_size, gpu, lin, lout,
+                          sub_batch_interleaving, sub_batch_size, pim_channels,
+                          sync_ns, execution_overlap, record_timeline)

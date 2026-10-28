@@ -1,26 +1,29 @@
-# NOTE: triton autotune monkey patch
-# Due to triton's autotune function intorudces non-deterministic behavior,
-# it interupts reproducibility. So we disable it.
-import triton
+"""Keep accuracy CUDA packages optional for CPU-only performance simulation."""
+import importlib
+
+_EXPORTS = {
+    'Performance': ('.performance.exp', 'Performance'),
+    'create_performance_exps': ('.performance.exps', 'create_performance_exps'),
+    'get_root_path': ('.performance.utils.file', 'get_root_path'),
+    'Accuracy': ('.accuracy.exp', 'Accuracy'),
+    'create_accuracy_exps': ('.accuracy.exps.utils', 'create_accuracy_exps'),
+    'draw': ('.draw.exps', 'draw'),
+}
+__all__ = list(_EXPORTS)
 
 
-def _dummy_tuner(**kwargs):
-    def decorator(fn):
-        return fn
-
-    return decorator
-
-
-triton.autotune = _dummy_tuner
-
-# disable logging
-import logging
-
-logging.disable()
-
-from .accuracy.exp import Accuracy as Accuracy
-from .accuracy.exps.utils import create_accuracy_exps as create_accuracy_exps
-from .draw.exps import draw as draw
-from .performance.exp import Performance as Performance
-from .performance.exps import create_performance_exps as create_performance_exps
-from .performance.utils.file import get_root_path as get_root_path
+def __getattr__(name):
+    if name not in _EXPORTS:
+        raise AttributeError(name)
+    if name in ('Accuracy', 'create_accuracy_exps'):
+        # Preserve upstream deterministic accuracy behavior when actually requested.
+        import triton
+        def _dummy_tuner(**kwargs):
+            return lambda fn: fn
+        triton.autotune = _dummy_tuner
+        import logging
+        logging.disable()
+    module, attr = _EXPORTS[name]
+    value = getattr(importlib.import_module(module, __name__), attr)
+    globals()[name] = value
+    return value

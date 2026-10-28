@@ -1,4 +1,7 @@
 import subprocess
+import os
+import json
+import hashlib
 from dataclasses import dataclass, field
 from pathlib import Path
 from tempfile import NamedTemporaryFile
@@ -73,6 +76,7 @@ def run_ramulator2(cls, device: PIM, layer_info: LayerInfo):
         NamedTemporaryFile("r", delete=True) as output_file,
     ):
         trace_file.write(trace.generate())  # type: ignore
+        trace_file.flush()
 
         # get base pim config
         pim_config = yaml.load(Path(__file__).parent / "base_pim_config.yaml")
@@ -93,6 +97,24 @@ def run_ramulator2(cls, device: PIM, layer_info: LayerInfo):
         )
         if res.returncode != 0:
             raise RuntimeError(f"Ramulator2 failed to run: {res.stderr.decode()}")
+
+        # Opt-in immutable raw command timing evidence for research experiments.
+        if audit_dir := os.environ.get("PIMBA_AUDIT_DIR"):
+            payload = Path(trace_file.name).read_bytes()
+            key = hashlib.sha256(payload + str(device.num_channels).encode()).hexdigest()[:16]
+            audit = Path(audit_dir) / key
+            audit.mkdir(parents=True, exist_ok=True)
+            (audit / "trace.txt").write_bytes(payload)
+            (audit / "config.yaml").write_text(Path(pim_config_file.name).read_text())
+            (audit / "stats.yaml").write_text(Path(output_file.name).read_text())
+            (audit / "stdout.log").write_bytes(res.stdout)
+            (audit / "stderr.log").write_bytes(res.stderr)
+            (audit / "metadata.json").write_text(json.dumps({
+                "layer": layer_info.__dict__, "channels": device.num_channels,
+                "hbm_freq": device.hbm_freq, "returncode": res.returncode,
+                "use_command_scheduling": device.use_command_scheduling,
+                "use_chunk_group": device.use_chunk_group,
+            }, indent=2))
 
         # result
         res = yaml.load(Path(output_file.name))
